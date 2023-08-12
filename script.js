@@ -1,138 +1,319 @@
-const navToggle = document.getElementById("navToggle");
-const overlay = document.getElementById("overlay");
-const closeOverlay = document.getElementById("closeOverlay");
-
-navToggle.addEventListener("click", () => {
-  overlay.classList.toggle("active");
-  if (overlay.classList.contains("active")) {
-    overlay.style.right = "0";
-  } else {
-    overlay.style.right = "-100%";
-  }
-});
-
-closeOverlay.addEventListener("click", () => {
-  overlay.classList.remove("active");
-  overlay.style.right = "-100%";
-});
-
-window.addEventListener("scroll", () => {
-  if (overlay.classList.contains("active")) {
-    overlay.classList.remove("active");
-    overlay.style.right = "-100%";
-  }
-});
-
-// Check screen width on load and resize
-function checkScreenWidth() {
-  if (window.innerWidth > 767) {
-    overlay.classList.remove("active");
-    overlay.style.right = "-100%";
-  }
+html {
+    scroll-behavior: smooth;
 }
 
-window.addEventListener("load", checkScreenWidth);
-window.addEventListener("resize", checkScreenWidth);
+/* Styles for the overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Initially hidden off-screen */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: right 0.5s ease-in-out;
+}
 
-const portfolioTitle = document.getElementById("portfolio-title");
+.overlay-content {
+    width: 80%;
+    /* Adjust the width as needed */
+    max-width: 400px;
+    /* Maximum width for content */
+    text-align: center;
+}
 
-const options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 1.0, // 100% of the element visible in the viewport
-};
+.overlay-navLinks {
+    margin-bottom: 20px;
+   
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    color: white;
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      portfolioTitle.classList.add("animate-slide-opacity");
-      observer.unobserve(entry.target);
+}
+
+
+
+
+
+.overlay-close {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    cursor: pointer;
+    color: white;
+    z-index: 9999;
+    font-size: 4em;
+}
+
+@media (max-width: 767px) {
+    #navLinks {
+        display: none;
+        /* Hide on mobile */
     }
-  });
-}, options);
 
-observer.observe(portfolioTitle);
+    #navToggle {
+        display: block;
+        /* Show fa-bars icon on mobile */
+    }
 
-function setupFullScreen(
-  fullScreenLinks,
-  fullScreenOverlay,
-  fullScreenImage,
-  closeButton,
-  prevButton,
-  nextButton,
-  imageUrls
-) {
-  let currentIndex = 0;
+    #overlay.active {
+        display: flex;
+        /* Show overlay on mobile after clicking fa-bars */
+    }
 
-  fullScreenLinks.forEach((link, index) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      openFullScreen(index);
-    });
-  });
-
-  closeButton.addEventListener("click", closeFullScreen);
-  prevButton.addEventListener("click", showPrevImage);
-  nextButton.addEventListener("click", showNextImage);
-
-  function openFullScreen(imageIndex) {
-    fullScreenImage.src = imageUrls[imageIndex];
-    currentIndex = imageIndex;
-
-    fullScreenOverlay.style.opacity = 0;
-    fullScreenOverlay.style.display = "flex";
-
-    setTimeout(() => {
-      fullScreenOverlay.style.opacity = 1;
-    }, 10);
-  }
-
-  function closeFullScreen() {
-    fullScreenOverlay.style.display = "none";
-  }
-
-  function showPrevImage() {
-    currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
-    openFullScreen(currentIndex);
-  }
-
-  function showNextImage() {
-    currentIndex = (currentIndex + 1) % imageUrls.length;
-    openFullScreen(currentIndex);
-  }
+    .overlay-navLinks>a {
+        color: white;
+        font-size: 2em;
+    }
 }
 
-// For Project 1
-setupFullScreen(
-  document.querySelectorAll(".full-screen-link"),
-  document.querySelector(".full-screen-overlay"),
-  document.querySelector(".full-screen-image"),
-  document.querySelector(".full-screen-close"),
-  document.querySelector(".prev"),
-  document.querySelector(".next"),
-  [
-    "img/rokmonta/rokmonta1.png",
-    "img/rokmonta/rokmonta2.png",
-    "img/rokmonta/rokmonta3.png",
-    // Add more image URLs as needed
-  ]
-);
 
-// For Project 2
-setupFullScreen(
-  document.querySelectorAll(".full-screen-link-project2"),
-  document.querySelector(".full-screen-overlay-project2"),
-  document.querySelector(".full-screen-image-project2"),
-  document.querySelector(".full-screen-close-project2"),
-  document.querySelector(".prev-project2"),
-  document.querySelector(".next-project2"),
-  [
-    "img/mileOfprogress/1.png",
-    "img/mileOfprogress/2.png",
-    "img/mileOfprogress/3.png",
-    "img/mileOfprogress/4.png",
-    "img/mileOfprogress/5.png",
-    "img/mileOfprogress/6.png",
-    "img/mileOfprogress/7.png",
-  ]
-);
+
+@keyframes pulse-sequence {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes bounce-once {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-20px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+        .animate-once {
+            animation: bounce-once 1s ease-in-out 1;
+            /* 1s duration, ease-in-out timing function, and only 1 iteration */
+        }
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+p, div, span, a, i {
+        font-family: 'Roboto', sans-serif;
+}
+
+.animate-pulse-sequence {
+    animation: pulse-sequence 1.5s infinite alternate;
+    animation-delay: calc(var(--animation-delay) * 0.3s);
+}
+
+/* Apply custom animation delay to each image */
+.animate-pulse-sequence:nth-child(1) {
+    --animation-delay: 0;
+}
+
+.animate-pulse-sequence:nth-child(2) {
+    --animation-delay: 1;
+}
+
+.animate-pulse-sequence:nth-child(3) {
+    --animation-delay: 2;
+}
+.animate-pulse-sequence:nth-child(4) {
+    --animation-delay: 3;
+}
+.animate-pulse-sequence:nth-child(5) {
+    --animation-delay: 4;
+}
+.animate-pulse-sequence:nth-child(6) {
+    --animation-delay: 5;
+}
+
+/* Add more nth-child selectors for other images */
+
+
+ @keyframes slide-opacity {
+     0% {
+         transform: translateX(-100px);
+         opacity: 0;
+     }
+
+     50% {
+         transform: translateX(0);
+         opacity: 0.5;
+     }
+
+     100% {
+         transform: translateX(0);
+         opacity: 1;
+     }
+ }
+        .animate-slide-opacity-start {
+            transform: translateX(-20px);
+            opacity: 0;
+        }
+ .animate-slide-opacity {
+     animation: slide-opacity 1s ease-in-out forwards;
+     /* 1s duration, ease-in-out timing function, and animation forwards */
+ }
+
+
+.full-screen-overlay ,.full-screen-overlay-project2{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    /* Initial opacity is 0 */
+    transition: opacity 1s ease-in-out;
+    /* Add opacity transition */
+}
+
+ .full-screen-content ,.full-screen-content-project2{
+     position: relative;
+     text-align: center;
+ }
+
+ .full-screen-image , .full-screen-image-project2{
+     max-width: 90vw;
+     max-height: 90vh;
+    
+ }
+
+ .full-screen-close,
+ .full-screen-nav {
+     position: absolute;
+     font-size: 32px;
+     cursor: pointer;
+     opacity: 0.8;
+     transition: opacity 0.2s;
+ }
+
+.full-screen-close {
+    position: absolute;
+    top: -47px;
+    right: 0px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.full-screen-close-project2 {
+    position: absolute;
+    top: -47px;
+    right: 0px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.full-screen-close-project2,
+.full-screen-nav-project2 {
+    position: absolute;
+    font-size: 32px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.full-screen-close:hover {
+    opacity: 1;
+}
+
+.full-screen-close-project2:hover {
+    opacity: 1;
+}
+
+.prev-project2 {
+    left: -47px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.next-project2 {
+    right: -47px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.full-screen-close-project2:hover,
+.full-screen-nav-project2:hover {
+    opacity: 1;
+}
+
+ .prev {
+     left: -47px;
+     top: 50%;
+     transform: translateY(-50%);
+ }
+
+ .next {
+     right: -47px;
+     top: 50%;
+     transform: translateY(-50%);
+ }
+
+ .full-screen-close:hover,
+ .full-screen-nav:hover {
+     opacity: 1;
+ }
+
+
+ @media (max-width: 767px) {
+
+     .full-screen-overlay,
+     .full-screen-overlay-project2 {
+         /* Adjust positioning and size for mobile */
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+     }
+
+     .full-screen-image,
+     .full-screen-image-project2 {
+         max-width: 80vw;
+         max-height: 80vh;
+     }
+
+         
+    .prev,.prev-project2 {
+        left: -13%;
+    }
+    .next,.next-project2 {
+        right: -12%;
+    }
+         .full-screen-close,.full-screen-close-project2 {
+            top: -30%;
+         }
+
+     /* Other adjustments as needed... */
+ }

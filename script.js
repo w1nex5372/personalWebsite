@@ -1,15 +1,21 @@
 const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
+const overlay = document.getElementById("overlay");
+const closeOverlay = document.getElementById("closeOverlay");
 
 navToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("hidden"); // Toggle the "hidden" class
-  if (navLinks.classList.contains("hidden")) {
-    console.log("testas");
-    navToggle.classList.add("fa-xmark");
+  overlay.classList.toggle("hidden");
+  if (!overlay.classList.contains("hidden")) {
+    overlay.style.right = "0";
   } else {
-    navToggle.classList.remove("fa-xmark");
+    overlay.style.right = "-100%";
   }
 });
+
+closeOverlay.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  overlay.style.right = "-100%";
+});
+
 
 const portfolioTitle = document.getElementById("portfolio-title");
 

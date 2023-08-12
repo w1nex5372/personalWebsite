@@ -88,9 +88,9 @@ setupFullScreen(
   document.querySelector(".prev"),
   document.querySelector(".next"),
   [
-    "/img/rokmonta/rokmonta1.png",
-    "/img/rokmonta/rokmonta2.png",
-    "/img/rokmonta/rokmonta3.png",
+    "img/rokmonta/rokmonta1.png",
+    "img/rokmonta/rokmonta2.png",
+    "img/rokmonta/rokmonta3.png",
     // Add more image URLs as needed
   ]
 );

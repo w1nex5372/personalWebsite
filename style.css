@@ -1,6 +1,5 @@
 /* Styles for the overlay */
 #overlay {
-   
     position: fixed;
     top: 0;
     right: -100%;
@@ -39,14 +38,14 @@
 
 .overlay-close {
     position: absolute;
-    top: 10px;
+    top: 12px;
     right: 10px;
     cursor: pointer;
     color: white;
     z-index: 9999;
+    font-size: 4em;
 }
 
-/* Media query to show/hide navigation */
 @media (max-width: 767px) {
     #navLinks {
         display: none;
@@ -55,20 +54,19 @@
 
     #navToggle {
         display: block;
-        
         /* Show fa-bars icon on mobile */
     }
 
-    #overlay {
-        right: 0;
-        
+    #overlay.active {
+        display: flex;
         /* Show overlay on mobile after clicking fa-bars */
     }
-        .overlay-navLinks>a {
-            color: white;
-        }
-}
 
+    .overlay-navLinks>a {
+        color: white;
+        font-size: 2em;
+    }
+}
 
 
 @keyframes pulse-sequence {

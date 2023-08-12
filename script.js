@@ -3,8 +3,8 @@ const overlay = document.getElementById("overlay");
 const closeOverlay = document.getElementById("closeOverlay");
 
 navToggle.addEventListener("click", () => {
-  overlay.classList.toggle("hidden");
-  if (!overlay.classList.contains("hidden")) {
+  overlay.classList.toggle("active");
+  if (overlay.classList.contains("active")) {
     overlay.style.right = "0";
   } else {
     overlay.style.right = "-100%";
@@ -12,10 +12,27 @@ navToggle.addEventListener("click", () => {
 });
 
 closeOverlay.addEventListener("click", () => {
-  overlay.classList.add("hidden");
+  overlay.classList.remove("active");
   overlay.style.right = "-100%";
 });
 
+window.addEventListener("scroll", () => {
+  if (overlay.classList.contains("active")) {
+    overlay.classList.remove("active");
+    overlay.style.right = "-100%";
+  }
+});
+
+// Check screen width on load and resize
+function checkScreenWidth() {
+  if (window.innerWidth > 767) {
+    overlay.classList.remove("active");
+    overlay.style.right = "-100%";
+  }
+}
+
+window.addEventListener("load", checkScreenWidth);
+window.addEventListener("resize", checkScreenWidth);
 
 const portfolioTitle = document.getElementById("portfolio-title");
 

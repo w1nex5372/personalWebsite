@@ -1,5 +1,75 @@
-.hidden {
-    display: none;
+html {
+    scroll-behavior: smooth;
+}
+
+/* Styles for the overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Initially hidden off-screen */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: right 0.5s ease-in-out;
+}
+
+.overlay-content {
+    width: 80%;
+    /* Adjust the width as needed */
+    max-width: 400px;
+    /* Maximum width for content */
+    text-align: center;
+}
+
+.overlay-navLinks {
+    margin-bottom: 20px;
+   
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    color: white;
+
+}
+
+
+
+
+
+.overlay-close {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    cursor: pointer;
+    color: white;
+    z-index: 9999;
+    font-size: 4em;
+}
+
+@media (max-width: 767px) {
+    #navLinks {
+        display: none;
+        /* Hide on mobile */
+    }
+
+    #navToggle {
+        display: block;
+        /* Show fa-bars icon on mobile */
+    }
+
+    #overlay.active {
+        display: flex;
+        /* Show overlay on mobile after clicking fa-bars */
+    }
+
+    .overlay-navLinks>a {
+        color: white;
+        font-size: 2em;
+    }
 }
 
 
@@ -214,4 +284,36 @@ p, div, span, a, i {
  .full-screen-close:hover,
  .full-screen-nav:hover {
      opacity: 1;
+ }
+
+
+ @media (max-width: 767px) {
+
+     .full-screen-overlay,
+     .full-screen-overlay-project2 {
+         /* Adjust positioning and size for mobile */
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+     }
+
+     .full-screen-image,
+     .full-screen-image-project2 {
+         max-width: 80vw;
+         max-height: 80vh;
+     }
+
+         
+    .prev,.prev-project2 {
+        left: -13%;
+    }
+    .next,.next-project2 {
+        right: -12%;
+    }
+         .full-screen-close,.full-screen-close-project2 {
+            top: -30%;
+         }
+
+     /* Other adjustments as needed... */
  }

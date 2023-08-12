@@ -1,15 +1,38 @@
 const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
+const overlay = document.getElementById("overlay");
+const closeOverlay = document.getElementById("closeOverlay");
 
 navToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("hidden"); // Toggle the "hidden" class
-  if (navLinks.classList.contains("hidden")) {
-    console.log("testas");
-    navToggle.classList.add("fa-xmark");
+  overlay.classList.toggle("active");
+  if (overlay.classList.contains("active")) {
+    overlay.style.right = "0";
   } else {
-    navToggle.classList.remove("fa-xmark");
+    overlay.style.right = "-100%";
   }
 });
+
+closeOverlay.addEventListener("click", () => {
+  overlay.classList.remove("active");
+  overlay.style.right = "-100%";
+});
+
+window.addEventListener("scroll", () => {
+  if (overlay.classList.contains("active")) {
+    overlay.classList.remove("active");
+    overlay.style.right = "-100%";
+  }
+});
+
+// Check screen width on load and resize
+function checkScreenWidth() {
+  if (window.innerWidth > 767) {
+    overlay.classList.remove("active");
+    overlay.style.right = "-100%";
+  }
+}
+
+window.addEventListener("load", checkScreenWidth);
+window.addEventListener("resize", checkScreenWidth);
 
 const portfolioTitle = document.getElementById("portfolio-title");
 

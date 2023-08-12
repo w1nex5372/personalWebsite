@@ -69,6 +69,7 @@
 }
 
 
+
 @keyframes pulse-sequence {
     0% {
         opacity: 1;
@@ -279,4 +280,36 @@ p, div, span, a, i {
  .full-screen-close:hover,
  .full-screen-nav:hover {
      opacity: 1;
+ }
+
+
+ @media (max-width: 767px) {
+
+     .full-screen-overlay,
+     .full-screen-overlay-project2 {
+         /* Adjust positioning and size for mobile */
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+     }
+
+     .full-screen-image,
+     .full-screen-image-project2 {
+         max-width: 80vw;
+         max-height: 80vh;
+     }
+
+         
+    .prev,.prev-project2 {
+        left: -13%;
+    }
+    .next,.next-project2 {
+        right: -13%;
+    }
+         .full-screen-close,.full-screen-close-project2 {
+            top: -30%;
+         }
+
+     /* Other adjustments as needed... */
  }

@@ -1,4 +1,4 @@
-document.addEventListemer('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   const navToggle = document.getElementById("navToggle");
 const overlay = document.getElementById("overlay");
 const closeOverlay = document.getElementById("closeOverlay");

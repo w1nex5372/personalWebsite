@@ -1,4 +1,5 @@
-const navToggle = document.getElementById("navToggle");
+document.addEventListemer('DOMContentLoaded', function() {
+  const navToggle = document.getElementById("navToggle");
 const overlay = document.getElementById("overlay");
 const closeOverlay = document.getElementById("closeOverlay");
 
@@ -136,3 +137,6 @@ setupFullScreen(
     "img/mileOfprogress/7.png",
   ]
 );
+}
+  
+

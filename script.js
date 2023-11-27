@@ -137,4 +137,20 @@ document.addEventListener("DOMContentLoaded", () => {
       "img/mileOfprogress/7.png",
     ]
   );
+
+  // For Project 3
+  setupFullScreen(
+    document.querySelectorAll(".full-screen-link-project3"),
+    document.querySelector(".full-screen-overlay-project3"),
+    document.querySelector(".full-screen-image-project3"),
+    document.querySelector(".full-screen-close-project3"),
+    document.querySelector(".prev-project3"),
+    document.querySelector(".next-project3"),
+    [
+      "img/socialmedia/1.png",
+      "img/socialmedia/2.png",
+      "img/socialmedia/3.png",
+      "img/socialmedia/4.png",
+    ]
+  );
 });

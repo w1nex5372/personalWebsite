@@ -205,7 +205,8 @@ i {
 }
 
 .full-screen-overlay,
-.full-screen-overlay-project2 {
+.full-screen-overlay-project2,
+.full-screen-overlay-project3 {
   position: fixed;
   top: 0;
   left: 0;
@@ -223,19 +224,23 @@ i {
 }
 
 .full-screen-content,
-.full-screen-content-project2 {
+.full-screen-content-project2,
+.full-screen-content-project3 {
   position: relative;
   text-align: center;
 }
 
 .full-screen-image,
-.full-screen-image-project2 {
+.full-screen-image-project2,
+.full-screen-image-project3 {
   max-width: 90vw;
   max-height: 90vh;
 }
 
 .full-screen-close,
-.full-screen-nav {
+.full-screen-nav,
+.full-screen-nav-project2,
+.full-screen-nav-project3 {
   position: absolute;
   font-size: 32px;
   cursor: pointer;
@@ -243,80 +248,55 @@ i {
   transition: opacity 0.2s;
 }
 
-.full-screen-close {
-  position: absolute;
-  top: -47px;
-  right: 0px;
-  font-size: 32px;
-  color: white;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-
-.full-screen-close-project2 {
-  position: absolute;
-  top: -47px;
-  right: 0px;
-  font-size: 32px;
-  color: white;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
+.full-screen-close,
 .full-screen-close-project2,
-.full-screen-nav-project2 {
+.full-screen-close-project3 {
   position: absolute;
+  top: -47px;
+  right: 0px;
   font-size: 32px;
+  color: white;
   cursor: pointer;
   opacity: 0.8;
   transition: opacity 0.2s;
 }
-.full-screen-close:hover {
-  opacity: 1;
-}
 
-.full-screen-close-project2:hover {
-  opacity: 1;
-}
 
-.prev-project2 {
-  left: -47px;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
-.next-project2 {
-  right: -47px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
+.full-screen-close:hover,
 .full-screen-close-project2:hover,
-.full-screen-nav-project2:hover {
+.full-screen-close-project3:hover {
   opacity: 1;
 }
 
-.prev {
+
+.prev,
+.prev-project2,
+.prev-project3 {
   left: 0px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.next {
+.next,
+.next-project2,
+ .next-project3{
   right: 0px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .full-screen-close:hover,
-.full-screen-nav:hover {
+.full-screen-nav:hover,
+.full-screen-close-project2:hover,
+.full-screen-nav-project2:hover {
   opacity: 1;
 }
 
 @media (max-width: 767px) {
   .full-screen-overlay,
-  .full-screen-overlay-project2 {
+  .full-screen-overlay-project2,
+  .full-screen-overlay-project3 {
     /* Adjust positioning and size for mobile */
     top: 0;
     left: 0;
@@ -325,21 +305,25 @@ i {
   }
 
   .full-screen-image,
-  .full-screen-image-project2 {
+  .full-screen-image-project2,
+    .full-screen-image-project3 {
     max-width: 80vw;
     max-height: 80vh;
   }
 
   .prev,
-  .prev-project2 {
+  .prev-project2,
+     .prev-project3 {
     left: 0%;
   }
   .next,
-  .next-project2 {
+  .next-project2
+  ,.next-project3 {
     right: 0%;
   }
-  .full-screen-close,
-  .full-screen-close-project2 {
+  .full-screen-close
+  .full-screen-close-project2,
+    .full-screen-close-project3 {
     top: -30%;
   }
 
